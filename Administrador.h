@@ -1,7 +1,7 @@
 #pragma once
 
-//ESTRUCTURA DE DATOS PARA USUARIOS VOTANTES
-struct Usuario
+//ESTRUCTURA DE DATOS PARA USUARIO ADMINISTRADOR
+struct Administrador
 {
     char nombre[50];
     int cedula;
@@ -9,3 +9,4 @@ struct Usuario
     char region[30];
     int clave;
 };
+

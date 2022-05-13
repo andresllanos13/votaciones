@@ -1,0 +1,14 @@
+{
+    "nombre":"Andres Llanos",
+    "cedula":
+    "edad":
+    "region":
+    "clave":
+}
+{
+    "nombre":"Juan Camilo Echeverry",
+    "cedula":1089932232
+    "edad":17
+    "region":"Risaralda"
+    "clave":0205
+}
