@@ -1,7 +1,6 @@
-
 #pragma once
-
 //ESTRUCTURA DE DATOS PARA USUARIOS VOTANTES
+
 struct Usuario
 {
     char nombre[50];

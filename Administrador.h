@@ -9,4 +9,3 @@ struct Administrador
     char region[30];
     int clave;
 };
-
