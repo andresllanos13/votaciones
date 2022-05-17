@@ -1,13 +1,14 @@
 #include <iostream>
+#include <windows.h>
 #include "ListaUsuarios.h"
 #include "ListaAdministradores.h"
 #include "ListaCandidatos.h"
 using namespace std;
 
-ListaUsuarios listaUsuarios;
 ListaCandidatos listaCandidatos;
 
-void menuAdmin(){ //MENU PARA EL USUARIO ADMINISTRADOR
+//MENU PARA EL USUARIO ADMINISTRADOR
+void menuAdmin(){ 
     int op;
     do{
         cout << "MODO ADMINISTRADOR" << endl;
@@ -36,9 +37,9 @@ void menuAdmin(){ //MENU PARA EL USUARIO ADMINISTRADOR
     }while (op!=0);
 }
 
-void menuvotante(){
+//MENU PARA EL USUARIO VOTANTE
+void menuVotante(){ 
 	int op;
-	int clave, cedula;
     do{
         //cout << "Usted esta incrito en la region: "<<endl<<Usuario.region<<endl; ;
         cout << "Ingrese la opcion que desea "<<endl;
@@ -64,9 +65,9 @@ void menuvotante(){
     }while(op!=0);
 }
 
+//MENU PARA EL USUARIO REPORTERO
 void menuReportero(){
 	int op;
-	int usuario3;
     cout<<"MODO REPORTERO"<<endl;
     do{
         // cout<<"usted esta reportando "<<endl<<Usuario.region<<endl; ;
@@ -97,9 +98,93 @@ void menuReportero(){
     }while(op!=0);
 }
 
+//Validar que solo ingresen enteros
+int get_int(void)
+{
+    char str[5];
+    char* end;
+    int num;
+    do{
+        fgets(str,5,stdin);
+        num=strtol(str,&end,10);
+        if(!(*end))
+            return num;
+        else
+        {
+            cout << endl;
+            puts("Ingrese una clave numerica de 4 digitos");
+            cout << endl;
+            num=0;
+        }
+    }while(num==0);
+}
+
+//Funcion para obtener la contraseña
+int capturarClave(){
+    HANDLE hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode = 0;
+
+    GetConsoleMode(hStdInput, &mode);
+    SetConsoleMode(hStdInput, mode & (~ENABLE_ECHO_INPUT));
+
+    int clave = get_int();
+
+    cout << endl;
+    SetConsoleMode(hStdInput, mode);
+
+    return clave;
+}
+
+
+//INICIAR SESION Y VALIDAR TIPO DE USUARIO
+void inicSesion(){
+    int cedula, clave, claveIngresada;
+    bool sesionIniciada = false;
+    do {
+        cout << "Ingrese su cedula: " << endl;
+        fflush(stdin);
+        cin >> cedula;
+        fflush(stdin);
+        clave = buscarAdmin(cedula);
+        if (clave != -1){
+            cout << "Ingrese su clave: ";
+            claveIngresada = capturarClave();
+            if (claveIngresada == clave){
+                cout << "Funciona Admin" << endl;
+                sesionIniciada = true;
+            }else{
+                system("cls");
+                cout << "Clave incorrecta, intente de nuevo" << endl;
+            }
+        }else{
+            cout << "Ingrese su clave: ";
+            clave = buscarUsuario(cedula);
+            if (clave != -1){
+                claveIngresada = capturarClave();
+                if (claveIngresada == clave){
+                    cout << "Funciona usuario" << endl;
+                    sesionIniciada = true;
+                }else{
+                    system("cls");
+                    cout << "Clave incorrecta, intente de nuevo" << endl;
+                }
+            }else{
+                system("cls");
+                cout << "No se encuentra la cedula" << endl;
+            }
+        }
+    }while(sesionIniciada == false);
+}
+
+//FUNCION PRINCIPAL
 int main(){
     iniciarListaAdmin();
-    mostrarListaAdmin();
+    inicListaUsuarios();
+
+    inicSesion();
+
+    //mostrarListaAdmin();
+    //mostrarListaUsuario();
 
     system("pause");
     return 0;

@@ -7,3 +7,7 @@ struct ListaUsuarios
 {
     Usuario usuario[CANTIDAD_USUARIOS];
 };
+
+void inicListaUsuarios();
+void mostrarListaUsuario();
+int buscarUsuario(int cedula);

@@ -1,2 +1,4 @@
 # SISTEMA DE VOTACIONES
-Proyecto final
+Proyecto final/
+Andres Felipe Llanos/
+Juan Camilo Echeverry

@@ -1,0 +1,7 @@
+{
+    "nombre":"Isabella Barragan",
+    "cedula":1106226360,
+    "edad":17,
+    "region":"Central",
+    "clave":1028
+}

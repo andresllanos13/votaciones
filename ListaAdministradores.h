@@ -11,3 +11,4 @@ struct ListaAdministradores
 
 void iniciarListaAdmin();
 void mostrarListaAdmin();
+int buscarAdmin(int cedula);
