@@ -3,7 +3,11 @@
 //ESTRUCTURA DE DATOS PARA CANDIDATOS
 struct Candidatos
 {
-    char nombre[50];
+    char presidente[50];
+    char vicepresidente[50];
     char partido[50];
     int votos;
 };
+
+void iniciarListaCandidatos();
+void mostrarListaCandidatos();

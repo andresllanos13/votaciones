@@ -1,0 +1,6 @@
+{
+    "presidente":"Gustavo Petro",
+    "vicepresidente":"Francia Marquez",
+    "partido":"Pacto historico",
+    "votos":0
+}

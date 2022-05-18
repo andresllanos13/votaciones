@@ -5,8 +5,6 @@
 #include "ListaCandidatos.h"
 using namespace std;
 
-ListaCandidatos listaCandidatos;
-
 //MENU PARA EL USUARIO ADMINISTRADOR
 void menuAdmin(){ 
     int op;
@@ -180,7 +178,8 @@ void inicSesion(){
 int main(){
     iniciarListaAdmin();
     inicListaUsuarios();
-
+    iniciarListaCandidatos();
+    mostrarListaCandidatos();
     inicSesion();
 
     //mostrarListaAdmin();

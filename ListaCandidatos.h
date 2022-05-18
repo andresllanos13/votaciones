@@ -1,9 +1,9 @@
 #pragma once
 #include "Candidatos.h"
-#define MAX 10
+#define CANTIDAD_CANDIDATOS 10
 
 //BASE DE DATOS DE CANDIDATOS
 struct ListaCandidatos
 {
-    Candidatos candidatos[MAX];
+    Candidatos candidatos[CANTIDAD_CANDIDATOS];
 };
