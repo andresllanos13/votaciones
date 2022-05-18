@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ListaAdministradores.h"
+#include "HeaderFiles/ListaAdministradores.h"
 using namespace std;
 
 FILE *archivoAdmin;

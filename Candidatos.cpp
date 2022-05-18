@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ListaCandidatos.h"
+#include "HeaderFiles/ListaCandidatos.h"
 using namespace std;
 
 FILE *archivoCandidatos;

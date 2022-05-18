@@ -1,8 +1,8 @@
 #include <iostream>
 #include <windows.h>
-#include "ListaUsuarios.h"
-#include "ListaAdministradores.h"
-#include "ListaCandidatos.h"
+#include "HeaderFiles/ListaAdministradores.h"
+#include "HeaderFiles/ListaCandidatos.h"
+#include "HeaderFiles/ListaUsuarios.h"
 using namespace std;
 
 //VALIDAR QUE SOLO SE INGRESEN ENTEROS
