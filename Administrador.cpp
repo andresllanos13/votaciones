@@ -18,6 +18,7 @@ void iniciarListaAdmin(){
         ret=fscanf(archivoAdmin, FORMATO_ADMIN_OUT, listaAdministradores.administradores[i].nombre, &listaAdministradores.administradores[i].cedula, &listaAdministradores.administradores[i].edad, listaAdministradores.administradores[i].region, &listaAdministradores.administradores[i].clave);
         i++;
     }
+    fclose(archivoAdmin);
 }
 
 //Imprimir la estructura de administradores (No necesario)
@@ -45,4 +46,46 @@ int buscarAdmin(int cedula){
         }
     }
     return -1;
+}
+
+//Busca la cedula que coincide con un administrador y retorna su posicion en el arreglo
+int buscarNumeroAdmin(int cedula){
+    for (int i=0; i<CANTIDAD_ADMINISTRADORES; i++){
+        if (listaAdministradores.administradores[i].nombre[0] != '\0' && listaAdministradores.administradores[i].cedula == cedula){
+            return i;
+        }
+    }
+    return -1;
+}
+
+//MENU PARA EL USUARIO ADMINISTRADOR
+void menuAdmin(int numeroUsuario){ 
+    int op;
+    do{
+        cout << "MODO ADMINISTRADOR" << endl;
+        cout << "No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre << endl;
+        cout << "1. Administrar Usuarios\n2. Administrar Candidatos\n3. Ver estadisticas\n4. Finalizar votaciones\n5. Salir\n";
+        cin >> op;
+        system("cls");
+        switch (op){
+            case 1:
+                //FUNCIONES
+                break;
+            case 2:
+                //MAS FUNCIONES
+                break;
+            case 3:
+                //MAAAAS FUNCIONES
+                break;
+            case 4:
+                //MUCHO TEXTO
+                break;
+            case 0:
+                //REGRESAR O SALIR
+                cout << "Saliendo del modo adminstrador..." << endl;
+                break;
+            default:
+                cout << "Ingrese una funcion válida" << endl;
+        }
+    }while (op!=0);
 }

@@ -18,6 +18,7 @@ void iniciarListaCandidatos(){
         ret = fscanf(archivoCandidatos, FORMATO_CANDIDATO_OUT, listaCandidatos.candidatos[i].presidente, listaCandidatos.candidatos[i].vicepresidente, listaCandidatos.candidatos[i].partido, &listaCandidatos.candidatos[i].votos);
         i++;
     }
+    fclose(archivoCandidatos);
 }
 
 void mostrarListaCandidatos(){

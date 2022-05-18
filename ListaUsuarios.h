@@ -8,6 +8,10 @@ struct ListaUsuarios
     Usuario usuario[CANTIDAD_USUARIOS];
 };
 
+
 void inicListaUsuarios();
 void mostrarListaUsuario();
 int buscarUsuario(int cedula);
+int buscarNumeroUsuario(int cedula);
+void menuVotante(int numeroUsuario);
+void menuReportero();

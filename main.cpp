@@ -5,111 +5,28 @@
 #include "ListaCandidatos.h"
 using namespace std;
 
-//MENU PARA EL USUARIO ADMINISTRADOR
-void menuAdmin(){ 
-    int op;
-    do{
-        cout << "MODO ADMINISTRADOR" << endl;
-        cout << "1. Administrar Usuarios\n2. Administrar Candidatos\n3. Ver estadisticas\n4. Finalizar votaciones\n";
-        cin >> op;
-        system("cls");
-        switch (op){
-            case 1:
-                //FUNCIONES
-                break;
-            case 2:
-                //MAS FUNCIONES
-                break;
-            case 3:
-                //MAAAAS FUNCIONES
-                break;
-            case 4:
-                //MUCHO TEXTO
-                break;
-            case 0:
-                //REGRESAR O SALIR
-                break;
-            default:
-                cout << "Ingrese una funcion válida" << endl;
-        }
-    }while (op!=0);
-}
-
-//MENU PARA EL USUARIO VOTANTE
-void menuVotante(){ 
-	int op;
-    do{
-        //cout << "Usted esta incrito en la region: "<<endl<<Usuario.region<<endl; ;
-        cout << "Ingrese la opcion que desea "<<endl;
-        cout << "Recuerde guardar su voto para que sea contado"<<endl;
-        cout << "1. Ver candidatos\n.2. Votar\n3. Guardar voto\n0. Salir"<<endl;
-        cin>>op;
-        switch (op){
-            case 1:
-                //funcion que muestra los candidatos 
-                break;
-            case 2:
-                //funcion que retorna el valor de el voto
-                break;
-            case 3:
-                //esta funcion guarda el voto definitivo y solo se podra usar una vez
-                break;
-            case 0:
-                //REGRESAR O SALIR
-                break;
-            default:
-                cout << "Ingrese una funcion válida" << endl;
-        }                         
-    }while(op!=0);
-}
-
-//MENU PARA EL USUARIO REPORTERO
-void menuReportero(){
-	int op;
-    cout<<"MODO REPORTERO"<<endl;
-    do{
-        // cout<<"usted esta reportando "<<endl<<Usuario.region<<endl; ;
-        cout<<"Ingrese la opcion que desea:"<<endl;
-        cout<<"1. Candidato con mayoria de votos\n2.Ver tabla de votos actual\n3. Ganador por regiones\n4. Dos candidatos mejor posicionados\n5. Saber si hay segunda vuelta\n0. Salir"<<endl;
-        cin>>op;
-        switch (op){
-            case 1:
-                //Funcion que muestra quien va ganando 
-                break;
-            case 2:
-                //Funcion muestra el total de votos para cada candidato
-                break;
-            case 3:
-                //Esta funcion muestra quien gana en cada region 
-                break;
-            case 4:
-                //Esta funcion muestra los dos candidatos mas votados 
-                break;
-            case 5:
-                //esta funcion muestra si hay segunda vuelta y quienes son los dos candidatos 
-                break;
-            case 0:
-                //salir
-            default:
-                cout << "Ingrese una funcion válida" << endl;
-        }      
-    }while(op!=0);
-}
-
-//Validar que solo ingresen enteros
+//VALIDAR QUE SOLO SE INGRESEN ENTEROS
 int get_int(void)
 {
+    HANDLE hStdInput = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode = 0;
+
     char str[5];
     char* end;
     int num;
     do{
+        GetConsoleMode(hStdInput, &mode);
+        SetConsoleMode(hStdInput, mode & (~ENABLE_ECHO_INPUT));
+
         fgets(str,5,stdin);
+        fflush(stdin);
         num=strtol(str,&end,10);
         if(!(*end))
             return num;
         else
         {
             cout << endl;
+            system("cls");
             puts("Ingrese una clave numerica de 4 digitos");
             cout << endl;
             num=0;
@@ -117,7 +34,7 @@ int get_int(void)
     }while(num==0);
 }
 
-//Funcion para obtener la contraseña
+//FUNCION PARA OBTENER LA CONTRASEÑA
 int capturarClave(){
     HANDLE hStdInput = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode = 0;
@@ -136,31 +53,43 @@ int capturarClave(){
 
 //INICIAR SESION Y VALIDAR TIPO DE USUARIO
 void inicSesion(){
-    int cedula, clave, claveIngresada;
+    int cedula, clave, claveIngresada, op;
+    int numeroUsuario;
     bool sesionIniciada = false;
     do {
+        op = 0;
         cout << "Ingrese su cedula: " << endl;
+
         fflush(stdin);
         cin >> cedula;
         fflush(stdin);
-        clave = buscarAdmin(cedula);
+
+        clave = buscarAdmin(cedula); //Revisar si la cedula corresponde a un admin
+        numeroUsuario = buscarNumeroAdmin(cedula);
         if (clave != -1){
+
             cout << "Ingrese su clave: ";
             claveIngresada = capturarClave();
+
             if (claveIngresada == clave){
-                cout << "Funciona Admin" << endl;
+                system("cls");
+                menuAdmin(numeroUsuario);
                 sesionIniciada = true;
             }else{
                 system("cls");
                 cout << "Clave incorrecta, intente de nuevo" << endl;
             }
         }else{
+
             cout << "Ingrese su clave: ";
-            clave = buscarUsuario(cedula);
+            clave = buscarUsuario(cedula); //Revisar si la cedula corresponde a un usuario
+            numeroUsuario = buscarNumeroUsuario(cedula);
+            
             if (clave != -1){
                 claveIngresada = capturarClave();
                 if (claveIngresada == clave){
-                    cout << "Funciona usuario" << endl;
+                    system("cls");
+                    menuVotante(numeroUsuario);
                     sesionIniciada = true;
                 }else{
                     system("cls");
@@ -168,10 +97,39 @@ void inicSesion(){
                 }
             }else{
                 system("cls");
-                cout << "No se encuentra la cedula" << endl;
+                cout << "No se encuentra la cedula, Desea ingresar como reportero? (0. No, 1. Si)" << endl;
+                cin >> op;
+                if (op==1){
+                    system("cls");
+                    menuReportero();
+                }
+                system("cls");
             }
         }
     }while(sesionIniciada == false);
+}
+
+//MENU PRINCIPAL
+void menuPrincipal(){
+    int op;
+    do{
+        cout << "PROTOTIPO VOTACIONES" << endl;
+        cout << "1. Iniciar sesion\n2. Salir\n";
+        cin >> op;
+        system("cls");
+        switch(op){
+            case 1:
+                system("cls");
+                inicSesion();
+                break;
+            case 0: 
+                cout << "Adios" << endl;
+                break;
+            default:
+                cout << "Ingrese una opcion valida" << endl;
+        }
+    }while(op!=0);
+    
 }
 
 //FUNCION PRINCIPAL
@@ -179,8 +137,8 @@ int main(){
     iniciarListaAdmin();
     inicListaUsuarios();
     iniciarListaCandidatos();
-    mostrarListaCandidatos();
-    inicSesion();
+    
+    menuPrincipal();
 
     //mostrarListaAdmin();
     //mostrarListaUsuario();
