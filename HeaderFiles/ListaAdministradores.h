@@ -13,3 +13,5 @@ void mostrarListaAdmin();
 int buscarAdmin(int cedula);
 int buscarNumeroAdmin(int cedula);
 void menuAdmin(int numeroUsuario);
+void administrarUsuarios();
+void administrarCandidatos();

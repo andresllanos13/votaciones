@@ -114,7 +114,7 @@ void menuPrincipal(){
     int op;
     do{
         cout << "PROTOTIPO VOTACIONES" << endl;
-        cout << "1. Iniciar sesion\n2. Salir\n";
+        cout << "1. Iniciar sesion\n0. Salir\n";
         cin >> op;
         system("cls");
         switch(op){
@@ -142,6 +142,7 @@ int main(){
 
     //mostrarListaAdmin();
     //mostrarListaUsuario();
+    mostrarListaCandidatos();
 
     system("pause");
     return 0;

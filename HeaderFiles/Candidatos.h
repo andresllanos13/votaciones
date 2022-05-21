@@ -8,6 +8,3 @@ struct Candidatos
     char partido[50];
     int votos;
 };
-
-void iniciarListaCandidatos();
-void mostrarListaCandidatos();
