@@ -15,3 +15,7 @@ int buscarUsuario(int cedula);
 int buscarNumeroUsuario(int cedula);
 void menuVotante(int numeroUsuario);
 void menuReportero();
+void agregarUsuario();
+void eliminarUsuario();
+void cambiarClave();
+void actualizarArchivo();

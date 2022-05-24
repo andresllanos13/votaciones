@@ -7,3 +7,6 @@ struct ListaCandidatos
 {
     Candidatos candidatos[CANTIDAD_CANDIDATOS];
 };
+
+void iniciarListaCandidatos();
+void mostrarListaCandidatos();

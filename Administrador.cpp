@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 #include "HeaderFiles/ListaAdministradores.h"
+#include "HeaderFiles/ListaUsuarios.h"
 using namespace std;
 
 FILE *archivoAdmin;
@@ -64,6 +65,7 @@ void menuAdmin(int numeroUsuario){
     
     int op;
     do{
+<<<<<<< HEAD
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout<<"________________________________"<<endl;
         SetConsoleTextAttribute(hConsole,3);
@@ -94,20 +96,25 @@ void menuAdmin(int numeroUsuario){
         cout<<"|  5. Salir    |"<<endl;
         SetConsoleTextAttribute(hConsole,7);
 
+=======
+        cout << "MODO ADMINISTRADOR" << endl;
+        cout << "No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre << endl;
+        cout << "1. Administrar Usuarios\n2. Administrar Candidatos\n3. Ver estadisticas\n4. Finalizar votaciones\n0. Salir\n";
+>>>>>>> 0574ce27038671f049744c535fecb807fd21afff
         cin >> op;
         system("cls");
         switch (op){
             case 1:
-                //FUNCIONES
+                administrarUsuarios();
                 break;
             case 2:
-                //MAS FUNCIONES
+                //ADMINISTRAR CANDIDATOS
                 break;
             case 3:
-                //MAAAAS FUNCIONES
+                //FUNCIONES ESTADISTICAS
                 break;
             case 4:
-                //MUCHO TEXTO
+                //FINALIZAR VOTACIONES NO SE COMO
                 break;
             case 0:
                 //REGRESAR O SALIR
@@ -126,4 +133,62 @@ void menuAdmin(int numeroUsuario){
 
         }
     }while (op!=0);
+}
+
+//MENU DE ADMINISTRAR USUARIOS
+void administrarUsuarios(){
+    int op;
+    do{
+        cout << "ADMINISTRAR USUARIOS" << endl;
+        cout << "1. Agregar usuario\n2. Eliminar usuario\n3. Cambiar clave de usuario\n0. Volver\n" << endl;
+        cin >> op;
+        system("cls");
+        switch(op){
+            case 1:
+                agregarUsuario();
+                system("cls");
+                cout << "Usuario agregado exitosamente" << endl;
+                break;
+            case 2:
+                eliminarUsuario();
+                break;
+            case 3:
+                cambiarClave();
+                mostrarListaUsuario();
+                break;
+            case 0:
+                system("cls");
+                cout << "Regresando..." << endl;
+                break;
+            default:
+                cout << "Ingrese una opcion valida" << endl;
+        }
+    }while(op!=0);
+}
+
+//MENU ADMINISTRAR CANDIDATOS
+void administrarCandidatos(){
+    int op;
+    do{
+        cout << "ADMINISTRAR CANDIDATOS" << endl;
+        cout << "1. Agregar candidato\n2. Eliminar candidato\n0. Volver\n" << endl;
+        cin >> op;
+        system("cls");
+        switch(op){
+            case 1:
+                //agregarCandidato();
+                system("cls");
+                cout << "Candidato agregado exitosamente" << endl;
+                break;
+            case 2:
+                
+                break;
+            case 0:
+                system("cls");
+                cout << "Regresando..." << endl;
+                break;
+            default:
+                cout << "Ingrese una opcion valida" << endl;
+        }
+    }while(op!=0);
 }

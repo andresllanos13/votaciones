@@ -144,6 +144,7 @@ void menuPrincipal(){
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int op;
     do{
+<<<<<<< HEAD
         cout<<  "______________________"<<endl;
         SetConsoleTextAttribute(hConsole,2);
         cout << "|PROTOTIPO VOTACIONES|" << endl;
@@ -157,6 +158,10 @@ void menuPrincipal(){
         cout << "|2. salir            |"<<endl;
         SetConsoleTextAttribute(hConsole,7);
         cout << "______________________"<<endl;
+=======
+        cout << "PROTOTIPO VOTACIONES" << endl;
+        cout << "1. Iniciar sesion\n0. Salir\n";
+>>>>>>> 0574ce27038671f049744c535fecb807fd21afff
         cin >> op;
         system("cls");
         switch(op){
@@ -193,6 +198,7 @@ int main(){
 
     //mostrarListaAdmin();
     //mostrarListaUsuario();
+    mostrarListaCandidatos();
 
     system("pause");
     return 0;

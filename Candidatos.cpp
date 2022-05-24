@@ -6,7 +6,7 @@ FILE *archivoCandidatos;
 ListaCandidatos listaCandidatos;
 
 //CADENA DE FORMATO PARA LECTURA DE ARCHIVOS
-const char* FORMATO_CANDIDATO_OUT = "{\n\t\"presidente\": \"%[^\"]\",\n\t\"vicepresidente\":\"%[^\"]\",\n\t\"partido\":\"%[^\"]\",\n\t\"votos\":%d\n}\n";
+const char* FORMATO_CANDIDATO_OUT = "{\n\t\"presidente\":\"%[^\"]\",\n\t\"vicepresidente\":\"%[^\"]\",\n\t\"partido\":\"%[^\"]\",\n\t\"votos\":%d\n}\n";
 
 //Leer los datos del archivo candidatos.txt y guardarlos en la estructura
 void iniciarListaCandidatos(){
@@ -21,6 +21,7 @@ void iniciarListaCandidatos(){
     fclose(archivoCandidatos);
 }
 
+//MOSTRAR LA ESTRUCTURA DE CANDIDATOS
 void mostrarListaCandidatos(){
     for(int i=0; i<CANTIDAD_CANDIDATOS; i++){
         if (listaCandidatos.candidatos[i].presidente[0] != '\0'){
@@ -33,3 +34,10 @@ void mostrarListaCandidatos(){
     }
 }
 
+//MODIFICAR CANDIDATOS (FALTA TERMINAR)
+void agregarCandidato(){
+    char presidente[50];
+    char vicepresidente[50];
+    char partido[50];
+    int votos;
+}
