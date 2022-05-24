@@ -7,13 +7,11 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "g:/c++ projects/votaciones",
-      "environment": [],
-      "program": "g:/c++ projects/votaciones/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
+      "externalConsole": true,
+      "cwd": "c:/Users/Usuario/Desktop/ja/votaciones",
+      "program": "c:/Users/Usuario/Desktop/ja/votaciones/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-      "externalConsole": true,
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
