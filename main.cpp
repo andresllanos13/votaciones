@@ -60,17 +60,17 @@ int capturarClave(){
 
 //INICIAR SESION Y VALIDAR TIPO DE USUARIO
 void inicSesion(){
-     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cedula, clave, claveIngresada, op;
     int numeroUsuario;
     bool sesionIniciada = false;
     do {
         op = 0;
         cout<< "______________________"<<endl;
-         SetConsoleTextAttribute(hConsole,4);
+         SetConsoleTextAttribute(hConsole,3);
         cout << "| Ingrese su cedula: |" << endl;
          SetConsoleTextAttribute(hConsole,7);
-         cout<<"_______________________"<<endl;
+         cout<<"______________________"<<endl;
 
         fflush(stdin);
         cin >> cedula;
@@ -80,10 +80,10 @@ void inicSesion(){
         numeroUsuario = buscarNumeroAdmin(cedula);
         if (clave != -1){
             cout<<"______________________"<<endl;
-             SetConsoleTextAttribute(hConsole,6);
+             SetConsoleTextAttribute(hConsole,3);
             cout << "| Ingrese su clave: |"<<endl;;
              SetConsoleTextAttribute(hConsole,7);
-             cout<<"_______________________"<<endl;
+             cout<<"______________________"<<endl;
             claveIngresada = capturarClave();
 
             if (claveIngresada == clave){
@@ -92,18 +92,18 @@ void inicSesion(){
                 sesionIniciada = true;
             }else{
                 system("cls");
-                cout<< "_____________________________________"<<endl;
-                 SetConsoleTextAttribute(hConsole,5);
+                cout << "______________________" << endl;
+                SetConsoleTextAttribute(hConsole,12);
                 cout << "| Clave incorrecta, intente de nuevo |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                 cout<<"_______________________________________"<<endl;
+                SetConsoleTextAttribute(hConsole,7);
+                cout<<"______________________"<<endl;
             }
         }else{
-             cout<<"________________________"<<endl;
-              SetConsoleTextAttribute(hConsole,2);
+            cout << "________________________" << endl;
+            SetConsoleTextAttribute(hConsole,3);
             cout << "| Ingrese su clave:  |"<<endl;
-             SetConsoleTextAttribute(hConsole,7);
-            cout<<"__________________________"<<endl;
+            SetConsoleTextAttribute(hConsole,7);
+            cout << "______________________" << endl;
             clave = buscarUsuario(cedula); //Revisar si la cedula corresponde a un usuario
             numeroUsuario = buscarNumeroUsuario(cedula);
             
@@ -115,19 +115,19 @@ void inicSesion(){
                     sesionIniciada = true;
                 }else{
                     system("cls");
-                    cout<< "_____________________________________"<<endl;
-                     SetConsoleTextAttribute(hConsole,3);
+                    cout << "______________________" <<endl;
+                    SetConsoleTextAttribute(hConsole,3);
                     cout << "| Clave incorrecta, intente de nuevo |" << endl;
-                     SetConsoleTextAttribute(hConsole,7);
-                     cout<<"_______________________________________"<<endl;
+                    SetConsoleTextAttribute(hConsole,7);
+                    cout << "______________________" << endl;
                 }
             }else{
                 system("cls");
                 cout<<"____________________________________________________________________________"<<endl;
                 SetConsoleTextAttribute(hConsole,3);
                 cout << "| No se encuentra la cedula, Desea ingresar como reportero? (0. No, 1. Si) |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout<< "____________________________________________________________________________"<<endl;
+                SetConsoleTextAttribute(hConsole,7);
+                cout << "____________________________________________________________________________" << endl;
                 cin >> op;
                 if (op==1){
                     system("cls");
@@ -144,24 +144,16 @@ void menuPrincipal(){
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int op;
     do{
-<<<<<<< HEAD
         cout<<  "______________________"<<endl;
-        SetConsoleTextAttribute(hConsole,2);
+        SetConsoleTextAttribute(hConsole, 3);
         cout << "|PROTOTIPO VOTACIONES|" << endl;
         SetConsoleTextAttribute(hConsole,7);
-        cout<<  "_______________________"<<endl;
-        SetConsoleTextAttribute(hConsole,6);
+        cout<<  "______________________"<<endl;
+        SetConsoleTextAttribute(hConsole,12);
         cout << "|1. Iniciar sesion   |"<<endl;
+        cout << "|0. Salir            |"<<endl;
         SetConsoleTextAttribute(hConsole,7);
         cout << "______________________"<<endl;
-        SetConsoleTextAttribute(hConsole,1);
-        cout << "|2. salir            |"<<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout << "______________________"<<endl;
-=======
-        cout << "PROTOTIPO VOTACIONES" << endl;
-        cout << "1. Iniciar sesion\n0. Salir\n";
->>>>>>> 0574ce27038671f049744c535fecb807fd21afff
         cin >> op;
         system("cls");
         switch(op){
@@ -177,7 +169,7 @@ void menuPrincipal(){
                 cout <<"______________________"<<endl;
                 break;
             default:
-                cout<<  "_____________________________"<<endl;
+                cout<<  "______________________"<<endl;
                 SetConsoleTextAttribute(hConsole,5);
                 cout << "| Ingrese una opcion valida |" << endl;
                 SetConsoleTextAttribute(hConsole,7);

@@ -1,9 +1,6 @@
 #include <iostream>
-<<<<<<< HEAD
 #include <windows.h>
-=======
 #include <string.h>
->>>>>>> 0574ce27038671f049744c535fecb807fd21afff
 #include "HeaderFiles/ListaUsuarios.h"
 using namespace std;
 
@@ -86,44 +83,29 @@ int buscarNumeroUsuario(int cedula){
 void menuVotante(int numeroUsuario){ 
 	int op;
     do{
-         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "_______________________________"<<endl;
-         SetConsoleTextAttribute(hConsole,5);
-        cout << "| SISTEMA DE VOTACION         |" << endl;
-         SetConsoleTextAttribute(hConsole,7);
-        cout <<"________________________________"<<endl;
-         SetConsoleTextAttribute(hConsole,3);
-        cout << "|    USUARIO:" << listaUsuarios.usuario[numeroUsuario].cedula << "\t" << listaUsuarios.usuario[numeroUsuario].nombre <<" |" <<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<< "_______________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,5);
-        cout << "| Ingrese la opcion que desea  |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"________________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,4);
-        cout << "|  Recuerde guardar su voto  |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"________________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,1);
-        cout << "|  1. Ver candidatos         |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"_______________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,6);
-        cout<<"|   2. Votar                   |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"________________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,6);
-         cout<<"|     3. Cambiar Voto          |"<<endl;
-          SetConsoleTextAttribute(hConsole,7);
-          cout<<"______________________________"<<endl;
-           SetConsoleTextAttribute(hConsole,4);
-          cout<<"|  4. Guardar voto           |"<<endl;
-           SetConsoleTextAttribute(hConsole,7);
-           cout<<"______________________________"<<endl;
-            SetConsoleTextAttribute(hConsole,3);
-           cout<<"|  0. Salir (Cerrar sesion)  |"<<endl;
-            SetConsoleTextAttribute(hConsole,7);
-            cout<<"_______________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,3);
+        cout << "|SISTEMA DE VOTACION\t\t|" << endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout <<"_______________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,3);
+        cout << "USUARIO:" << listaUsuarios.usuario[numeroUsuario].cedula << "\n" << listaUsuarios.usuario[numeroUsuario].nombre <<endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout<< "_______________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,5);
+        cout << "|Ingrese la opcion que desea\t|"<<endl;
+        cout << "|Recuerde guardar su voto\t|"<<endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout<<"_______________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,12);
+        cout << "|1. Ver candidatos\t\t|" << endl;
+        cout << "|2. Votar\t\t\t|" << endl;
+        cout << "|3. Cambiar Voto\t\t|" << endl;
+        cout << "|4. Guardar voto\t\t|" << endl;
+        cout << "|0. Salir (Cerrar sesion)\t|" << endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout<<"_______________________________"<<endl;
         cin>>op;
         system("cls");
         switch (op){
@@ -161,40 +143,25 @@ void menuVotante(int numeroUsuario){
 void menuReportero(){
 	int op;
     do{
-         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-         cout<<"_____________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,3);
-        cout<<" |  MODO REPORTERO         |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"______________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,4);
-        cout<<"| Ingrese la opcion que desea: |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"_____________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,1);
-        cout<<"| 1. Candidato con mayoria de votos |"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"______________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,6);
-       cout<<"|  2.Ver tabla de votos actual |"<<endl;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        cout<<"________________________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,3);
+        cout<<"|MODO REPORTERO\t\t\t\t|"<<endl;
         SetConsoleTextAttribute(hConsole,7);
-        cout<<"_______________________________"<<endl;
-         SetConsoleTextAttribute(hConsole,2);
-       cout<<"| 3. Ganador por regiones     |"<<endl;
+        cout<<"________________________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,3);
+        cout<<"|Ingrese la opcion que desea:\t\t|"<<endl;
         SetConsoleTextAttribute(hConsole,7);
-        cout<<"________________________________"<<endl;
-         SetConsoleTextAttribute(hConsole,6);
-        cout<<"| 4. Dos candidatos mejor posicionados|"<<endl;
-         SetConsoleTextAttribute(hConsole,7);
-         cout<<"________________________________"<<endl;
-          SetConsoleTextAttribute(hConsole,3);
-         cout<<"|5. Saber si hay segunda vuelta |"<<endl;
-          SetConsoleTextAttribute(hConsole,7);
-          cout<<"________________________________"<<endl;
-           SetConsoleTextAttribute(hConsole,1);
-          cout<<"|   0. Salir                  |"<<endl;
-           SetConsoleTextAttribute(hConsole,7);
-           cout<<"_______________________________"<<endl;
+        cout<<"________________________________________"<<endl;
+        SetConsoleTextAttribute(hConsole, 12);
+        cout<<"|1. Candidato con mayoria de votos\t|"<<endl;
+        cout<<"|2. Ver tabla de votos actual\t\t|"<<endl;
+        cout<<"|3. Ganador por regiones\t\t|"<<endl;
+        cout<<"|4. Dos candidatos mejor posicionados\t|"<<endl;
+        cout<<"|5. Saber si hay segunda vuelta\t\t|"<<endl;
+        cout<<"|0. Salir\t\t\t\t|"<<endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout<<"________________________________________"<<endl;
         cin>>op;
         system("cls");
         switch (op){

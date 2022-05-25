@@ -29,7 +29,7 @@ void mostrarListaCandidatos(){
             cout << "Presidente: " << listaCandidatos.candidatos[i].presidente << endl;
             cout << "Vicepresidente: " << listaCandidatos.candidatos[i].vicepresidente << endl;
             cout << "Partido: " << listaCandidatos.candidatos[i].partido << endl;
-            cout << "Votos: " << listaCandidatos.candidatos[i].votos << endl;
+            //cout << "Votos: " << listaCandidatos.candidatos[i].votos << endl;
         }
     }
 }

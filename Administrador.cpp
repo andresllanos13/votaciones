@@ -65,42 +65,23 @@ void menuAdmin(int numeroUsuario){
     
     int op;
     do{
-<<<<<<< HEAD
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout<<"________________________________"<<endl;
+        cout<<"________________________________" << endl;
         SetConsoleTextAttribute(hConsole,3);
-        cout << "| MODO ADMINISTRADOR         |" << endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"________________________________"<<endl;
-        SetConsoleTextAttribute(hConsole,4);
-        cout << " | No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre <<"|" <<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"________________________________"<<endl;
-        SetConsoleTextAttribute(hConsole,5);
-        cout << "| 1. Administrar Usuarios |"<<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"_________________________________"<<endl;
+        cout << "|MODO ADMINISTRADOR\t\t|" << endl;
         SetConsoleTextAttribute(hConsole,3);
-        cout<<"| 2. Administrar Candidatos |"<<endl;
+        cout << "|No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre <<"|" <<endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout<<"________________________________" << endl;
+        SetConsoleTextAttribute(hConsole,12);
+        cout << "|1. Administrar Usuarios\t|" << endl;
+        cout << "|2. Administrar Candidatos\t|" << endl;
+        cout << "|3. Ver estadisticas\t\t|" << endl;
+        cout << "|4. Finalizar votaciones\t| " << endl;
+        cout << "|0. Salir\t\t\t|" << endl;
         SetConsoleTextAttribute(hConsole,7);
         cout<<"__________________________________"<<endl;
-        SetConsoleTextAttribute(hConsole,1);
-        cout<<"| 3. Ver estadisticas   |"<<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"__________________________________"<<endl;
-        SetConsoleTextAttribute(hConsole,2);
-        cout<<"| 4. Finalizar votaciones  | "<<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"___________________________________"<<endl;
-        SetConsoleTextAttribute(hConsole,5);
-        cout<<"|  5. Salir    |"<<endl;
-        SetConsoleTextAttribute(hConsole,7);
 
-=======
-        cout << "MODO ADMINISTRADOR" << endl;
-        cout << "No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre << endl;
-        cout << "1. Administrar Usuarios\n2. Administrar Candidatos\n3. Ver estadisticas\n4. Finalizar votaciones\n0. Salir\n";
->>>>>>> 0574ce27038671f049744c535fecb807fd21afff
         cin >> op;
         system("cls");
         switch (op){
@@ -120,14 +101,14 @@ void menuAdmin(int numeroUsuario){
                 //REGRESAR O SALIR
                 cout<<"________________________________________"<<endl;
                 SetConsoleTextAttribute(hConsole,4);
-                cout << "| Saliendo del modo adminstrador...  |" << endl;
+                cout << "| Saliendo del modo adminstrador...\t|" << endl;
                 SetConsoleTextAttribute(hConsole,7);
                 cout<<"________________________________________"<<endl;
                 break;
             default:
                 cout<<"__________________________________"<<endl;
                 SetConsoleTextAttribute(hConsole,2);
-                cout << "|  Ingrese una funcion válida  |" << endl;
+                cout << "|  Ingrese una funcion válida\t|" << endl;
                 SetConsoleTextAttribute(hConsole,7);
                 cout<<"__________________________________"<<endl;
 

@@ -19,3 +19,10 @@
 	"region": "Sur",
 	"clave":425
 }
+{
+	"nombre": "Kevin Yesid",
+	"cedula":1324354657,
+	"edad":24,
+	"region": "Central",
+	"clave":1234
+}
