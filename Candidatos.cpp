@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include "HeaderFiles/ListaCandidatos.h"
 using namespace std;
 
@@ -23,16 +24,25 @@ void iniciarListaCandidatos(){
 
 //MOSTRAR LA ESTRUCTURA DE CANDIDATOS
 void mostrarListaCandidatos(){
-    for(int i=0; i<CANTIDAD_CANDIDATOS; i++){
-        if (listaCandidatos.candidatos[i].presidente[0] != '\0'){
-            cout << i+1 << endl;
-            cout << "Presidente: " << listaCandidatos.candidatos[i].presidente << endl;
-            cout << "Vicepresidente: " << listaCandidatos.candidatos[i].vicepresidente << endl;
-            cout << "Partido: " << listaCandidatos.candidatos[i].partido << endl;
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+            
+            cout << "_________________________________________________________________"<<endl;
+             SetConsoleTextAttribute(hConsole,12);
+            cout << "|  opcion numero 1        |     |       opcion numero 2        |" <<endl;      
+            cout << "|Presidente: " << listaCandidatos.candidatos[0].presidente <<"|\t" <<"|Presidente: " << listaCandidatos.candidatos[1].presidente <<"|\t"<<endl;
+            cout << "|Vicepre:  "  << listaCandidatos.candidatos[0].vicepresidente <<"|\t"<<"|Vicepre:    " << listaCandidatos.candidatos[1].vicepresidente <<"      |\t"<< endl;
+            cout << "|Partido:  " << listaCandidatos.candidatos[0].partido <<"|\t"<<"|Partido: " << listaCandidatos.candidatos[1].partido <<"  |\t"<< endl;
             //cout << "Votos: " << listaCandidatos.candidatos[i].votos << endl;
-        }
+             SetConsoleTextAttribute(hConsole,7);
+            cout << "__________________________________________________________________"<<endl;
+             SetConsoleTextAttribute(hConsole,13);
+            cout << "|  opcion numero 3         |    |      opcion numero 4         |" <<endl;  
+             cout << "|Presidente: " << listaCandidatos.candidatos[2].presidente <<"|\t" <<"|Presidente: " << listaCandidatos.candidatos[3].presidente <<"    |\t"<<endl;
+            cout << "|Vicepre:  "  << listaCandidatos.candidatos[2].vicepresidente <<"|\t"<<"|Vicepre: " << listaCandidatos.candidatos[3].presidente <<"       |\t"<< endl;
+            cout << "|Partido:  " << listaCandidatos.candidatos[2].partido <<"|\t"<<"|Partido:  " << listaCandidatos.candidatos[3].presidente <<"      |\t"<< endl;
     }
-}
+
 
 //MODIFICAR CANDIDATOS (FALTA TERMINAR)
 void agregarCandidato(){
