@@ -10,6 +10,7 @@ struct ListaUsuarios
 
 
 void inicListaUsuarios();
+void inicListaVotos();
 void mostrarListaUsuario();
 int buscarUsuario(int cedula);
 int buscarNumeroUsuario(int cedula);
@@ -19,3 +20,5 @@ void agregarUsuario();
 void eliminarUsuario();
 void cambiarClave();
 void actualizarArchivo();
+int votar();
+int registrarVoto(int cedula, int voto);

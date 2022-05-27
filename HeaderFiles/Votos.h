@@ -3,7 +3,7 @@
 //ESTRUCTURA DE DATOS PARA CONTAR VOTOS
 struct Votos
 {
-    char candidato[50];
+    int votos;
     int central;
     int norte;
     int sur;

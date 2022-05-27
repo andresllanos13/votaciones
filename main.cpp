@@ -190,7 +190,7 @@ int main(){
 
     //mostrarListaAdmin();
     //mostrarListaUsuario();
-    mostrarListaCandidatos();
+    //mostrarListaCandidatos();
 
     system("pause");
     return 0;

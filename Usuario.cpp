@@ -2,14 +2,23 @@
 #include <windows.h>
 #include <string.h>
 #include "HeaderFiles/ListaUsuarios.h"
+#include "HeaderFiles/ListaCandidatos.h"
+#include "HeaderFiles/ListaVotos.h"
 using namespace std;
 
+//Archivo y lista de usuarios
 FILE *archivoUsuarios;
 ListaUsuarios listaUsuarios;
 
-//CADENAS DE FORMATO PARA LECTURA DE ARCHIVOS
+//Archivo y lista de votos
+FILE *archivoVotos;
+ListaVotos listavotos;
+
+//CADENAS DE FORMATO PARA LECTURA Y ESCRITURA DE ARCHIVOS
 const char* FORMATO_USUARIO_OUT = "{\n\t\"nombre\": \"%[^\"]\",\n\t\"cedula\":%d,\n\t\"edad\":%d,\n\t\"region\": \"%[^\"]\",\n\t\"clave\":%d\n}\n";
 const char* FORMATO_USUARIO_IN = "{\n\t\"nombre\": \"%s\",\n\t\"cedula\":%d,\n\t\"edad\":%d,\n\t\"region\": \"%s\",\n\t\"clave\":%d\n}\n";
+const char* FORMATO_VOTO_OUT = "{\n\t\"cedula\":%d,\n\t\"voto\":%d,\n}\n";
+const char* FORMATO_VOTO_IN = "{\n\t\"cedula\":%d,\n\t\"voto\":%d,\n}\n";
 
 //Leer los datos del archivo usuarios.txt y guardarlos en la estructura
 void inicListaUsuarios(){
@@ -22,6 +31,18 @@ void inicListaUsuarios(){
         i++;
     }
     fclose(archivoUsuarios);
+}
+
+//Iniciar la estructura que guarda los votos de los usuarios
+void inicListaVotos(){
+    for (int i=0; i<CANTIDAD_CANDIDATOS; i++){
+        listavotos.candidato[i].central = 0;
+        listavotos.candidato[i].norte = 0;
+        listavotos.candidato[i].sur = 0;
+        listavotos.candidato[i].joven = 0;
+        listavotos.candidato[i].adulto = 0;
+        listavotos.candidato[i].mayor = 0;
+    }
 }
 
 //Imprimir la estructura de usuarios (No necesario)
@@ -81,7 +102,7 @@ int buscarNumeroUsuario(int cedula){
 
 //MENU PARA EL USUARIO VOTANTE
 void menuVotante(int numeroUsuario){ 
-	int op;
+	int op, voto=-1;
     do{
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "_______________________________"<<endl;
@@ -110,16 +131,25 @@ void menuVotante(int numeroUsuario){
         system("cls");
         switch (op){
             case 1:
-                //funcion que muestra los candidatos 
+                //funcion que muestra los candidatos
+                mostrarListaCandidatos();
                 break;
             case 2:
                 //funcion que retorna el valor de el voto
+                voto = votar();
                 break;
             case 3:
-                //esta funcion cambia el voto
+                voto = votar();
                 break;
             case 4:
                 //esta funcion guarda el voto definitivo y solo se podra usar una vez
+                if (voto != -1){
+                    if (registrarVoto(listaUsuarios.usuario[numeroUsuario].cedula, voto) == 0){
+                        op = 0;
+                    }
+                }else{
+                    cout << "El usuario aun no ha seleccionado un candidato." << endl;
+                }
                 break;
             case 0:
                 //REGRESAR O SALIR
@@ -307,4 +337,45 @@ void actualizarArchivo(){
         }
     }
     fclose(archivoUsuarios);
+}
+
+//PREGUNTAR POR QUE CANDIDATO VA A VOTAR Y VALIDAR
+int votar(){
+    int voto;
+    mostrarListaCandidatos();
+    cout << endl << "Seleccione su candidato: ";
+    cin >> voto;
+    system("cls");
+    if (voto >= 1 && voto <= 5){
+        cout << "Usted esta votando por: " << voto << endl;
+        return voto;
+    }else{
+        cout << "Ingrese un voto valido" << endl;
+        return -1;
+    }
+}
+
+int registrarVoto(int cedula, int voto){
+    int cedulaYaUsada, votoUsado, i=0;
+    fopen_s(&archivoVotos, "Datos/votos.txt", "r+");
+    fseek(archivoVotos, 0, SEEK_SET);
+    int ret = 0;
+    while (ret!=EOF){
+        ret=fscanf(archivoVotos, FORMATO_VOTO_OUT, &cedulaYaUsada, &votoUsado);
+        i++;
+        if (cedulaYaUsada == cedula){
+            cout << "Este usuario ya ha votado, su voto fue por el candidato: " << votoUsado << endl;
+            fclose(archivoVotos);
+            return -1;
+        }
+    }
+    fclose(archivoUsuarios);
+    listavotos.candidato[voto].votos++;
+    //FALTA VERIFICAR SU EDAD Y REGION
+    fopen_s(&archivoVotos, "Datos/votos.txt", "at+");
+    fseek(archivoVotos, 0, SEEK_END);
+    fprintf_s(archivoVotos, FORMATO_VOTO_IN, cedula, voto);
+    fclose(archivoVotos);
+    cout << "Voto registrado exitosamente, cerrando sesion..." << endl;
+    return 0;
 }

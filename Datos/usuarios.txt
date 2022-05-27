@@ -26,3 +26,10 @@
 	"region": "Central",
 	"clave":1234
 }
+{
+	"nombre": "Cristobal Ochoa",
+	"cedula":1089097158,
+	"edad":18,
+	"region": "Sur",
+	"clave":104
+}

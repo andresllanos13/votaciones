@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Usuario/Desktop/ja/votaciones",
-      "program": "c:/Users/Usuario/Desktop/ja/votaciones/build/Debug/outDebug",
+      "cwd": "g:/c++ projects/votaciones",
+      "program": "g:/c++ projects/votaciones/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
       "setupCommands": [
