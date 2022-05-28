@@ -148,7 +148,11 @@ void menuVotante(int numeroUsuario){
                         op = 0;
                     }
                 }else{
-                    cout << "El usuario aun no ha seleccionado un candidato." << endl;
+                    cout << "___________________________________________________" << endl;
+                      SetConsoleTextAttribute(hConsole,13);
+                    cout << "| El usuario aun no ha seleccionado un candidato. |" << endl;
+                      SetConsoleTextAttribute(hConsole,7);
+                    cout << "___________________________________________________" << endl;
                 }
                 break;
             case 0:
@@ -224,25 +228,44 @@ void menuReportero(){
 
 //REGISTRAR NUEVO USUARIO
 void agregarUsuario(){
+    
     char nombre[50];
     int cedula;
     int edad;
     char region[30];
     int clave;
-
-    cout << "Ingrese el nombre del nuevo usuario: ";
-    fflush(stdin);
+     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    cout << "_______________________________________"<<endl;
+     SetConsoleTextAttribute(hConsole,12);
+    cout << "| Ingrese el nombre del nuevo usuario: |";
+     SetConsoleTextAttribute(hConsole,7);
+    cout << "_______________________________________"<<endl;
+    fflush(stdin); 
     gets(nombre);
-    cout << "Ingrese la cedula: ";
+    cout << "______________________"<<endl;
+     SetConsoleTextAttribute(hConsole,12);
+    cout << "| Ingrese la cedula: |"<<endl;
+     SetConsoleTextAttribute(hConsole,7);
+    cout << "______________________"<<endl;
     fflush(stdin);
     cin >> cedula;
-    cout << "Ingrese la edad: ";
+    cout << "____________________"<<endl;
+     SetConsoleTextAttribute(hConsole,12);
+    cout << "| Ingrese la edad: |"<<endl;
+     SetConsoleTextAttribute(hConsole,7);
+    cout << "____________________"<<endl;
     fflush(stdin);
     cin >> edad;
-    cout << "Ingrese la region del nuevo usuario: ";
+    cout << "________________________________________"<<endl;
+     SetConsoleTextAttribute(hConsole,12);
+    cout << "| Ingrese la region del nuevo usuario: |"<<endl;
+     SetConsoleTextAttribute(hConsole,7);
+    cout << "________________________________________"<<endl;
     fflush(stdin);
     gets(region);
-    cout << "Ingrese la clave: ";
+    cout << "_____________________"<<endl;
+    cout << "| Ingrese la clave: |"<<endl;
+    cout << "_____________________"<<endl;
     fflush(stdin);
     cin >> clave;
 
@@ -265,14 +288,24 @@ void agregarUsuario(){
 
 //ELIMINAR USUARIO DE LA ESTRUCTURA
 void eliminarUsuario(){
+     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cedula;
-    cout << "Ingrese la cedula a eliminar: ";
+    cout << "_________________________________"<<endl;
+     SetConsoleTextAttribute(hConsole,13);
+    cout << "| Ingrese la cedula a eliminar: |"<<endl;
+     SetConsoleTextAttribute(hConsole,7);
+    cout << "_________________________________"<<endl;
     cin >> cedula;
 
     for (int i=0; i<CANTIDAD_USUARIOS; i++){
         if (listaUsuarios.usuario[i].nombre[0] != '\0' && listaUsuarios.usuario[i].cedula == cedula){
-            cout << "Corresponde a: " << listaUsuarios.usuario[i].nombre << endl;
-            cout << "Desea eliminarlo? (1. Si, 2. No)" << endl;
+            cout << "________________________________________"<<endl;
+             SetConsoleTextAttribute(hConsole,13);
+            cout << "|Corresponde a: " << listaUsuarios.usuario[i].nombre <<"|" <<endl;
+            cout << "|Desea eliminarlo? (1. Si, 2. No)      |" << endl;
+             SetConsoleTextAttribute(hConsole,7);
+            cout << "________________________________________" << endl;
+
             cin >> cedula;
             if (cedula == 1){
                 listaUsuarios.usuario[i].nombre[0] = '\0';
@@ -280,16 +313,26 @@ void eliminarUsuario(){
                 listaUsuarios.usuario[i].cedula = 0;
                 listaUsuarios.usuario[i].edad = 0;
                 system("cls");
-                cout << "Eliminado exitosamente" << endl;
+                cout << "__________________________"<<endl; 
+                 SetConsoleTextAttribute(hConsole,13);
+                cout << "| Eliminado exitosamente |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "__________________________"<<endl;
                 break; 
             }
             else{
                 system("cls");
-                cout << "No se elimino el usuario" << endl;
+                cout << "____________________________" << endl;
+                cout << "| No se elimino el usuario |" << endl;
+                cout << "____________________________" << endl;
             }
         }
         if (i==CANTIDAD_USUARIOS-1){
-            cout << "No se encontro la cedula" << endl;
+            cout << "____________________________" << endl;
+             SetConsoleTextAttribute(hConsole,13);
+            cout << "| No se encontro la cedula |" << endl;
+             SetConsoleTextAttribute(hConsole,7);
+            cout << "____________________________" << endl;
         }
     }
     actualizarArchivo();
@@ -297,31 +340,55 @@ void eliminarUsuario(){
 
 //CAMBIAR LA CLAVE DE UN USUARIO
 void cambiarClave(){
+     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cedula, clave;
-    cout << "Ingrese la cedula: ";
+
+    cout << "______________________"<<endl;
+    SetConsoleTextAttribute(hConsole,13);
+    cout << "| Ingrese la cedula: |"<<endl;
+    SetConsoleTextAttribute(hConsole,7);
+    cout << "______________________"<<endl;
     cin >> cedula;
 
     for (int i=0; i<CANTIDAD_USUARIOS; i++){
         if (listaUsuarios.usuario[i].nombre[0] != '\0' && listaUsuarios.usuario[i].cedula == cedula){
-            cout << "Corresponde a: " << listaUsuarios.usuario[i].nombre << endl;
-            cout << "Desea cambiar su clave? (1. Si, 2. No)" << endl;
+            cout << "__________________________________________"<<endl;
+            SetConsoleTextAttribute(hConsole,13);
+            cout << "|Corresponde a: " << listaUsuarios.usuario[i].nombre <<"|"<< endl;
+            cout << "|Desea cambiar su clave? (1. Si, 2. No)  |" << endl;
+            SetConsoleTextAttribute(hConsole,7);
+            cout << "__________________________________________" << endl;
             cin >> cedula;
             if (cedula == 1){
-                cout << "Ingrese su nueva clave: ";
+                cout << "___________________________"<<endl;
+                SetConsoleTextAttribute(hConsole,11);
+                cout << "| Ingrese su nueva clave: |"<<endl;
+                SetConsoleTextAttribute(hConsole,7);
+                cout << "___________________________"<<endl;
                 cin >> clave;
                 listaUsuarios.usuario[i].clave = clave;
                 system("cls");
-                cout << "Clave cambiada exitosamente" << endl;
+                cout << "_______________________________" << endl;
+                cout << "| Clave cambiada exitosamente |" << endl;
+                cout << "_______________________________" << endl;
                 break;
             }
             else{
                 system("cls");
-                cout << "No se elimino el usuario" << endl;
+                cout << "____________________________" << endl;
+                SetConsoleTextAttribute(hConsole,13);
+                cout << "| No se elimino el usuario |" << endl;
+                SetConsoleTextAttribute(hConsole,7);
+                cout << "____________________________" << endl;
                 break;
             }
         }
         if (i==CANTIDAD_USUARIOS-1){
-            cout << "No se encontro la cedula" << endl;
+            cout << "____________________________" << endl;
+            SetConsoleTextAttribute(hConsole,13);
+            cout << "| No se encontro la cedula |" << endl;
+            SetConsoleTextAttribute(hConsole,7);
+            cout << "____________________________" << endl;
         }
     }
     actualizarArchivo();
@@ -341,60 +408,65 @@ void actualizarArchivo(){
 
 //PREGUNTAR POR QUE CANDIDATO VA A VOTAR Y VALIDAR
 int votar(){
+      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int voto;
     mostrarListaCandidatos();
-    cout << endl << "Seleccione su candidato: ";
+    
+    cout << endl;
+    cout << "____________________________"<<endl;
+    SetConsoleTextAttribute(hConsole,13);
+    cout << "| Seleccione su candidato: |"<<endl;
+    SetConsoleTextAttribute(hConsole,7);
+    cout << "____________________________"<<endl;
     cin >> voto;
     system("cls");
-    if (voto >= 1 && voto <= 4){
-        cout << "Usted esta votando por: " << voto << endl;
+    if (voto >= 1 && voto <= 5){
+        cout << "_________________________________"<<endl;
+        SetConsoleTextAttribute(hConsole,13);
+        cout << "| Usted esta votando por: " << voto <<"|"<< endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout << "_________________________________"<<endl;
         return voto;
     }else{
-        cout << "Ingrese un voto valido" << endl;
+        cout << "__________________________" << endl;
+        SetConsoleTextAttribute(hConsole,13);
+        cout << "| Ingrese un voto valido |" << endl;
+        SetConsoleTextAttribute(hConsole,7);
+        cout << "__________________________" << endl;
         return -1;
     }
 }
 
-int registrarVoto(int cedula, int voto, int numeroUsuario){
+int registrarVoto(int cedula, int voto){
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     int cedulaYaUsada, votoUsado, i=0;
     fopen_s(&archivoVotos, "Datos/votos.txt", "r+");
-    int ret = fscanf(archivoVotos, FORMATO_VOTO_OUT, &cedulaYaUsada, &votoUsado);
+    fseek(archivoVotos, 0, SEEK_SET);
+    int ret = 0;
     while (ret!=EOF){
         ret=fscanf(archivoVotos, FORMATO_VOTO_OUT, &cedulaYaUsada, &votoUsado);
         i++;
         if (cedulaYaUsada == cedula){
-            cout << "Este usuario ya ha votado, su voto fue por el candidato: " << votoUsado << endl;
+            cout << "__________________________________________________________________________________"<<endl;
+            SetConsoleTextAttribute(hConsole,13);
+            cout << "Este usuario ya ha votado, su voto fue por el candidato: " << votoUsado <<"|" <<endl;
+            SetConsoleTextAttribute(hConsole,7);
+            cout << "__________________________________________________________________________________"<<endl;
             fclose(archivoVotos);
             return -1;
         }
     }
     fclose(archivoUsuarios);
-
-    //AÑADIR VOTO
-    listavotos.candidato[voto-1].votos++;
-
-    //VERIFICAR REGION
-    if (listaUsuarios.usuario[numeroUsuario].region[0] == 'C'){
-        listavotos.candidato[voto-1].central++;
-    }else if(listaUsuarios.usuario[numeroUsuario].region[0] == 'N'){
-        listavotos.candidato[voto-1].norte++;
-    }else if(listaUsuarios.usuario[numeroUsuario].region[0] == 'S'){
-        listavotos.candidato[voto-1].sur++;
-    }
-
-    //VERIFICAR EDAD
-    if (listaUsuarios.usuario[numeroUsuario].edad < 30){
-        listavotos.candidato[voto-1].joven++;
-    }else if(listaUsuarios.usuario[numeroUsuario].edad < 50){
-        listavotos.candidato[voto-1].adulto++;
-    }else{
-        listavotos.candidato[voto-1].mayor++;
-    }
-
+    listavotos.candidato[voto].votos++;
+    //FALTA VERIFICAR SU EDAD Y REGION
     fopen_s(&archivoVotos, "Datos/votos.txt", "at+");
     fseek(archivoVotos, 0, SEEK_END);
     fprintf_s(archivoVotos, FORMATO_VOTO_IN, cedula, voto);
     fclose(archivoVotos);
-    cout << "Voto registrado exitosamente, cerrando sesion..." << endl;
+    cout << "_____________________________________________________" << endl;
+    SetConsoleTextAttribute(hConsole,13);
+    cout << "|Voto registrado exitosamente, cerrando sesion...   |" << endl;
+    SetConsoleTextAttribute(hConsole,7);
+    cout << "_____________________________________________________" << endl;
     return 0;
 }
