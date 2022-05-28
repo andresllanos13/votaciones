@@ -1,6 +1,6 @@
 #pragma once
 #include "Candidatos.h"
-#define CANTIDAD_CANDIDATOS 10
+#define CANTIDAD_CANDIDATOS 4
 
 //BASE DE DATOS DE CANDIDATOS
 struct ListaCandidatos

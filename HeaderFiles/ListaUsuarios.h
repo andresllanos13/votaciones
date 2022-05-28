@@ -21,4 +21,4 @@ void eliminarUsuario();
 void cambiarClave();
 void actualizarArchivo();
 int votar();
-int registrarVoto(int cedula, int voto);
+int registrarVoto(int cedula, int voto, int numeroUsuario);

@@ -185,6 +185,7 @@ int main(){
     iniciarListaAdmin();
     inicListaUsuarios();
     iniciarListaCandidatos();
+    inicListaVotos();
     
     menuPrincipal();
 
