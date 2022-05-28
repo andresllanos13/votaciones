@@ -120,15 +120,28 @@ void menuAdmin(int numeroUsuario){
 void administrarUsuarios(){
     int op;
     do{
-        cout << "ADMINISTRAR USUARIOS" << endl;
-        cout << "1. Agregar usuario\n2. Eliminar usuario\n3. Cambiar clave de usuario\n0. Volver\n" << endl;
+        
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        cout << "____________________________"<<endl;
+         SetConsoleTextAttribute(hConsole,14);
+        cout << "|ADMINISTRAR USUARIOS      |" << endl;
+        cout << "|1. Agregar usuario        |" << endl;
+        cout << "|2. Eliminar usuario       |" << endl;
+        cout << "|3.Cambiar clave de usuario|" << endl;
+        cout << "|0. Volver                 |" << endl;
+        cout << "____________________________" << endl;
+        
         cin >> op;
         system("cls");
         switch(op){
             case 1:
                 agregarUsuario();
                 system("cls");
-                cout << "Usuario agregado exitosamente" << endl;
+                 cout << "________________________________"<<endl;
+                 SetConsoleTextAttribute(hConsole,15);
+                cout << "| Usuario agregado exitosamente |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "________________________________"<< endl;
                 break;
             case 2:
                 eliminarUsuario();
@@ -139,10 +152,18 @@ void administrarUsuarios(){
                 break;
             case 0:
                 system("cls");
-                cout << "Regresando..." << endl;
+                cout << "_________________"<<endl;
+                 SetConsoleTextAttribute(hConsole,14);
+                cout << "| Regresando... |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "_________________"<<endl;
                 break;
             default:
-                cout << "Ingrese una opcion valida" << endl;
+                cout << "_____________________________" << endl;
+                 SetConsoleTextAttribute(hConsole,14);
+                cout << "| Ingrese una opcion valida |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "_____________________________" << endl;
         }
     }while(op!=0);
 }
@@ -151,25 +172,44 @@ void administrarUsuarios(){
 void administrarCandidatos(){
     int op;
     do{
-        cout << "ADMINISTRAR CANDIDATOS" << endl;
-        cout << "1. Agregar candidato\n2. Eliminar candidato\n0. Volver\n" << endl;
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        cout << "__________________________" << endl;
+         SetConsoleTextAttribute(hConsole,14); 
+        cout << "| ADMINISTRAR CANDIDATOS |" << endl;
+        cout << "| 1. Agregar candidato   |" << endl;
+        cout << "| 2. Eliminar candidato  |" << endl;
+        cout << "| 0. Volver              |" << endl;
+         SetConsoleTextAttribute(hConsole,7);
+        cout << "__________________________" << endl;
         cin >> op;
         system("cls");
         switch(op){
             case 1:
                 //agregarCandidato();
                 system("cls");
-                cout << "Candidato agregado exitosamente" << endl;
+                 cout << "___________________________________" << endl;
+                 SetConsoleTextAttribute(hConsole,14);
+                cout << "| Candidato agregado exitosamente |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "___________________________________" << endl;
                 break;
             case 2:
                 
                 break;
             case 0:
                 system("cls");
-                cout << "Regresando..." << endl;
+                cout << "_________________" << endl;
+                 SetConsoleTextAttribute(hConsole,14);
+                cout << "| Regresando... |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "_________________" << endl;
                 break;
             default:
-                cout << "Ingrese una opcion valida" << endl;
+                 cout << "_____________________________" << endl;
+                 SetConsoleTextAttribute(hConsole,14);
+                cout << "| Ingrese una opcion valida |" << endl;
+                 SetConsoleTextAttribute(hConsole,7);
+                cout << "_____________________________" << endl;
         }
     }while(op!=0);
 }
