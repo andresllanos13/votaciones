@@ -144,7 +144,7 @@ void menuVotante(int numeroUsuario){
             case 4:
                 //esta funcion guarda el voto definitivo y solo se podra usar una vez
                 if (voto != -1){
-                    if (registrarVoto(listaUsuarios.usuario[numeroUsuario].cedula, voto) == 0){
+                    if (registrarVoto(listaUsuarios.usuario[numeroUsuario].cedula, voto, numeroUsuario) == 0){
                         op = 0;
                     }
                 }else{
@@ -346,7 +346,7 @@ int votar(){
     cout << endl << "Seleccione su candidato: ";
     cin >> voto;
     system("cls");
-    if (voto >= 1 && voto <= 5){
+    if (voto >= 1 && voto <= 4){
         cout << "Usted esta votando por: " << voto << endl;
         return voto;
     }else{
@@ -355,11 +355,10 @@ int votar(){
     }
 }
 
-int registrarVoto(int cedula, int voto){
+int registrarVoto(int cedula, int voto, int numeroUsuario){
     int cedulaYaUsada, votoUsado, i=0;
     fopen_s(&archivoVotos, "Datos/votos.txt", "r+");
-    fseek(archivoVotos, 0, SEEK_SET);
-    int ret = 0;
+    int ret = fscanf(archivoVotos, FORMATO_VOTO_OUT, &cedulaYaUsada, &votoUsado);
     while (ret!=EOF){
         ret=fscanf(archivoVotos, FORMATO_VOTO_OUT, &cedulaYaUsada, &votoUsado);
         i++;
@@ -370,8 +369,28 @@ int registrarVoto(int cedula, int voto){
         }
     }
     fclose(archivoUsuarios);
-    listavotos.candidato[voto].votos++;
-    //FALTA VERIFICAR SU EDAD Y REGION
+
+    //AÑADIR VOTO
+    listavotos.candidato[voto-1].votos++;
+
+    //VERIFICAR REGION
+    if (listaUsuarios.usuario[numeroUsuario].region[0] == 'C'){
+        listavotos.candidato[voto-1].central++;
+    }else if(listaUsuarios.usuario[numeroUsuario].region[0] == 'N'){
+        listavotos.candidato[voto-1].norte++;
+    }else if(listaUsuarios.usuario[numeroUsuario].region[0] == 'S'){
+        listavotos.candidato[voto-1].sur++;
+    }
+
+    //VERIFICAR EDAD
+    if (listaUsuarios.usuario[numeroUsuario].edad < 30){
+        listavotos.candidato[voto-1].joven++;
+    }else if(listaUsuarios.usuario[numeroUsuario].edad < 50){
+        listavotos.candidato[voto-1].adulto++;
+    }else{
+        listavotos.candidato[voto-1].mayor++;
+    }
+
     fopen_s(&archivoVotos, "Datos/votos.txt", "at+");
     fseek(archivoVotos, 0, SEEK_END);
     fprintf_s(archivoVotos, FORMATO_VOTO_IN, cedula, voto);

@@ -42,14 +42,4 @@ void mostrarListaCandidatos(){
     cout << "|Partido:  " << listaCandidatos.candidatos[2].partido <<"|\t"<<"|Partido:  " << listaCandidatos.candidatos[3].presidente <<"      |\t"<< endl;
     SetConsoleTextAttribute(hConsole,7);
     cout << "__________________________________________________________________"<<endl;
-    cout << "Opicon numero 5: Voto en blanco" << endl;
-}
-
-
-//MODIFICAR CANDIDATOS (FALTA TERMINAR)
-void agregarCandidato(){
-    char presidente[50];
-    char vicepresidente[50];
-    char partido[50];
-    int votos;
 }
