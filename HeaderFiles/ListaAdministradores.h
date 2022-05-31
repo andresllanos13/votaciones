@@ -8,8 +8,11 @@ struct ListaAdministradores
 };
 
 
+//INICIAR LISTAS
 void iniciarListaAdmin();
 void mostrarListaAdmin();
+
+//BUSCAR PARA INICIAR SESION
 int buscarAdmin(int cedula);
 int buscarNumeroAdmin(int cedula);
 void menuAdmin(int numeroUsuario);

@@ -199,7 +199,7 @@ void menuReportero(){
                 //Funcion que muestra quien va ganando 
                 break;
             case 2:
-                //Funcion muestra el total de votos para cada candidato
+                mostrarVotos();
                 break;
             case 3:
                 //Esta funcion muestra quien gana en cada region 
@@ -378,4 +378,27 @@ int registrarVoto(int cedula, int voto){
     fclose(archivoVotos);
     cout << "Voto registrado exitosamente, cerrando sesion..." << endl;
     return 0;
+}
+
+void masVotos(){ //TENGO QUE TERMINAR ESTO
+    int arregloVotos[CANTIDAD_CANDIDATOS];
+    for (int i=0; i<CANTIDAD_CANDIDATOS; i++){
+        //COSAS PARA MIRAR QUIEN TIENE MAS VOTOS
+    }
+}
+
+void mostrarVotos(){
+    for (int i=0; i<CANTIDAD_CANDIDATOS; i++){
+        cout << i+1 << ". ";
+        getNombre(i);
+        cout << "Numero de votos: " << listavotos.candidato[i].votos << endl;
+        cout << "Numero de votos por region: " << endl;
+        cout << "Central: " << listavotos.candidato[i].central << endl;
+        cout << "Norte: " << listavotos.candidato[i].norte << endl;
+        cout << "Sur: " << listavotos.candidato[i].sur << endl;
+        cout << "Numero de votos por edad: " << endl;
+        cout << "Joven: " << listavotos.candidato[i].joven << endl;
+        cout << "Adulto: " << listavotos.candidato[i].adulto << endl;
+        cout << "Mayor: " << listavotos.candidato[i].mayor << endl;
+    }
 }

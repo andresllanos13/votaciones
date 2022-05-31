@@ -181,7 +181,6 @@ void menuPrincipal(){
 
 //FUNCION PRINCIPAL
 int main(){
-    
     iniciarListaAdmin();
     inicListaUsuarios();
     iniciarListaCandidatos();

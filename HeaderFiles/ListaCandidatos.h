@@ -10,3 +10,4 @@ struct ListaCandidatos
 
 void iniciarListaCandidatos();
 void mostrarListaCandidatos();
+void getNombre(int pos);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <string.h>
 #include "HeaderFiles/ListaCandidatos.h"
 using namespace std;
 
@@ -45,11 +46,6 @@ void mostrarListaCandidatos(){
     cout << "Opicon numero 5: Voto en blanco" << endl;
 }
 
-
-//MODIFICAR CANDIDATOS (FALTA TERMINAR)
-void agregarCandidato(){
-    char presidente[50];
-    char vicepresidente[50];
-    char partido[50];
-    int votos;
+void getNombre(int pos){
+    cout << listaCandidatos.candidatos[pos].presidente << endl;
 }
