@@ -33,3 +33,11 @@ int registrarVoto(int cedula, int voto);
 
 //FUNCIONES REPORTERO
 void mostrarVotos();
+void dosMas();
+void gpr();
+void ganaRegionN();
+void ganaRegionS();
+void ganaRegionC();
+void ganaRegionC();
+void totalVotos1();
+void ganador();

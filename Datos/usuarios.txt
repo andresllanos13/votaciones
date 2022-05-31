@@ -33,3 +33,24 @@
 	"region": "Sur",
 	"clave":104
 }
+{
+	"nombre": "Adriana Munoz",
+	"cedula":25161253,
+	"edad":56,
+	"region": "Sur",
+	"clave":1990
+}
+{
+	"nombre": "Amparo Echeverry",
+	"cedula":29133109,
+	"edad":82,
+	"region": "Norte",
+	"clave":1936
+}
+{
+	"nombre": "Beatriz Munoz",
+	"cedula":31949144,
+	"edad":61,
+	"region": "Central",
+	"clave":260
+}

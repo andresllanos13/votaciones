@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <string.h>
 #include "HeaderFiles/ListaCandidatos.h"
+#include "HeaderFiles/ListaVotos.h"
 using namespace std;
 
 FILE *archivoCandidatos;
@@ -43,9 +44,19 @@ void mostrarListaCandidatos(){
     cout << "|Partido:  " << listaCandidatos.candidatos[2].partido <<"|\t"<<"|Partido:  " << listaCandidatos.candidatos[3].presidente <<"      |\t"<< endl;
     SetConsoleTextAttribute(hConsole,7);
     cout << "__________________________________________________________________"<<endl;
-    cout << "Opicon numero 5: Voto en blanco" << endl;
 }
 
 void getNombre(int pos){
     cout << listaCandidatos.candidatos[pos].presidente << endl;
+}
+
+void totalVotos(int n){
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+    Box(35,25);
+    SetConsoleTextAttribute(hConsole,12);
+    gotoxy(4,2);
+    cout<<listaCandidatos.candidatos[n].presidente;
+    gotoxy(4,3);
+    cout<<listaCandidatos.candidatos[n].vicepresidente;
 }

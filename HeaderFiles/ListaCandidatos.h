@@ -1,6 +1,7 @@
 #pragma once
 #include "Candidatos.h"
-#define CANTIDAD_CANDIDATOS 10
+#include "Gotoxy.h"
+#define CANTIDAD_CANDIDATOS 4
 
 //BASE DE DATOS DE CANDIDATOS
 struct ListaCandidatos
@@ -11,3 +12,4 @@ struct ListaCandidatos
 void iniciarListaCandidatos();
 void mostrarListaCandidatos();
 void getNombre(int pos);
+void totalVotos(int n);
