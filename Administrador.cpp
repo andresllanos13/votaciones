@@ -3,6 +3,34 @@
 #include "HeaderFiles/ListaAdministradores.h"
 #include "HeaderFiles/ListaUsuarios.h"
 using namespace std;
+ void gotoxy (int x,int y){
+	COORD coord;
+	coord.X=x;
+	coord.Y=y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}
+void Box (int w,int h){
+	int i,j;
+	putchar(218);
+	for(i=0;i<w-2;i++){
+		putchar(196);
+	}
+	putchar(191);
+	cout<<endl;
+	for(i=0;i<h-2;i++){
+		putchar(179);
+		for(j=0;j<w-2;j++){
+			cout<<" ";
+		}
+		putchar(179);
+		cout<<endl;
+	}
+	putchar(192);
+	for(i=0;i<w-2;i++){
+		putchar(196);
+	}
+	putchar(217);
+}   
 
 FILE *archivoAdmin;
 ListaAdministradores listaAdministradores;
@@ -27,11 +55,18 @@ void iniciarListaAdmin(){
 void mostrarListaAdmin(){
     for (int i=0; i<CANTIDAD_ADMINISTRADORES; i++){
         if (listaAdministradores.administradores[i].nombre[0]!='\0'){
+            Box(80,9);
+            gotoxy(3,1);
             cout << i+1 << "." << endl;
+            gotoxy(4,3);
             cout << "Nombre: " << listaAdministradores.administradores[i].nombre << endl;
+            gotoxy(4,4);
             cout << "Cedula: " << listaAdministradores.administradores[i].cedula << endl;
+            gotoxy(4,5);
             cout << "Edad: " << listaAdministradores.administradores[i].edad << endl;
+            gotoxy(4,6);
             cout << "Region: " << listaAdministradores.administradores[i].region << endl;
+            gotoxy(4,7);
             cout << "Clave: " << listaAdministradores.administradores[i].clave << endl;
         }
         else{
@@ -66,22 +101,25 @@ void menuAdmin(int numeroUsuario){
     int op;
     do{
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout<<"________________________________" << endl;
+        Box(15,10);
         SetConsoleTextAttribute(hConsole,3);
-        cout << "|MODO ADMINISTRADOR\t\t|" << endl;
-        SetConsoleTextAttribute(hConsole,3);
-        cout << "|No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre <<"|" <<endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"________________________________" << endl;
+        gotoxy(6,1);
+        cout << "MODO ADMINISTRADOR" << endl;
+       gotoxy(4,3);
+        cout << "No. " << listaAdministradores.administradores[numeroUsuario].cedula << "\t" << listaAdministradores.administradores[numeroUsuario].nombre <<"|" <<endl;
+        
         SetConsoleTextAttribute(hConsole,12);
-        cout << "|1. Administrar Usuarios\t|" << endl;
-        cout << "|2. Administrar Candidatos\t|" << endl;
-        cout << "|3. Ver estadisticas\t\t|" << endl;
-        cout << "|4. Finalizar votaciones\t| " << endl;
-        cout << "|0. Salir\t\t\t|" << endl;
-        SetConsoleTextAttribute(hConsole,7);
-        cout<<"__________________________________"<<endl;
-
+        gotoxy(4,4);
+        cout << "1. Administrar Usuarios" << endl;
+        gotoxy(4,5);
+        cout << "2. Administrar Candidatos" << endl;
+        gotoxy(4,6);
+        cout << "3. Ver estadisticas" << endl;
+        gotoxy(4,7);
+        cout << "4. Finalizar votaciones" << endl;
+        gotoxy(4,8);
+        cout << "0. Salir" << endl;
+        
         cin >> op;
         system("cls");
         switch (op){
@@ -99,19 +137,18 @@ void menuAdmin(int numeroUsuario){
                 break;
             case 0:
                 //REGRESAR O SALIR
-                cout<<"________________________________________"<<endl;
+                Box(20,5);
                 SetConsoleTextAttribute(hConsole,4);
-                cout << "| Saliendo del modo adminstrador...\t|" << endl;
-                SetConsoleTextAttribute(hConsole,7);
-                cout<<"________________________________________"<<endl;
+                gotoxy(4,3);
+                cout << "Saliendo del modo adminstrador..." << endl;
+                
                 break;
             default:
-                cout<<"__________________________________"<<endl;
+                Box(20,5);
                 SetConsoleTextAttribute(hConsole,2);
-                cout << "|  Ingrese una funcion válida\t|" << endl;
-                SetConsoleTextAttribute(hConsole,7);
-                cout<<"__________________________________"<<endl;
-
+                gotoxy(4,3);
+                cout << "Ingrese una funcion válida" << endl;
+                
         }
     }while (op!=0);
 }
@@ -122,14 +159,18 @@ void administrarUsuarios(){
     do{
         
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "____________________________"<<endl;
+       Box(20,8);
          SetConsoleTextAttribute(hConsole,14);
-        cout << "|ADMINISTRAR USUARIOS      |" << endl;
-        cout << "|1. Agregar usuario        |" << endl;
+         gotoxy(6,1);
+        cout << "ADMINISTRAR USUARIOS      " << endl;
+        gotoxy(4,3);
+        cout << "1. Agregar usuario        " << endl;
+        gotoxy(4,4);
         cout << "|2. Eliminar usuario       |" << endl;
+        gotoxy(4,5);
         cout << "|3.Cambiar clave de usuario|" << endl;
-        cout << "|0. Volver                 |" << endl;
-        cout << "____________________________" << endl;
+        gotoxy(4,6);
+        cout << "0. Volver                 " << endl;
         
         cin >> op;
         system("cls");
@@ -137,11 +178,11 @@ void administrarUsuarios(){
             case 1:
                 agregarUsuario();
                 system("cls");
-                 cout << "________________________________"<<endl;
+                 Box(20,5);
                  SetConsoleTextAttribute(hConsole,15);
-                cout << "| Usuario agregado exitosamente |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "________________________________"<< endl;
+                 gotoxy(4,3);
+                cout << "Usuario agregado exitosamente" << endl;
+             
                 break;
             case 2:
                 eliminarUsuario();
@@ -152,18 +193,18 @@ void administrarUsuarios(){
                 break;
             case 0:
                 system("cls");
-                cout << "_________________"<<endl;
+                Box(15,5);
                  SetConsoleTextAttribute(hConsole,14);
-                cout << "| Regresando... |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "_________________"<<endl;
+                 gotoxy(4,3);
+                cout << "Regresando..." << endl;
+                
                 break;
             default:
-                cout << "_____________________________" << endl;
+                Box(20,5);
                  SetConsoleTextAttribute(hConsole,14);
-                cout << "| Ingrese una opcion valida |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "_____________________________" << endl;
+                 gotoxy(4,3);
+                cout << "Ingrese una opcion valida" << endl;
+                 
         }
     }while(op!=0);
 }
@@ -173,43 +214,47 @@ void administrarCandidatos(){
     int op;
     do{
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "__________________________" << endl;
+        Box(20,8);
          SetConsoleTextAttribute(hConsole,14); 
-        cout << "| ADMINISTRAR CANDIDATOS |" << endl;
-        cout << "| 1. Agregar candidato   |" << endl;
-        cout << "| 2. Eliminar candidato  |" << endl;
-        cout << "| 0. Volver              |" << endl;
-         SetConsoleTextAttribute(hConsole,7);
-        cout << "__________________________" << endl;
+         gotoxy(5,1);
+        cout << "ADMINISTRAR CANDIDATOS " << endl;
+        gotoxy(4,3);
+        cout << "1. Agregar candidato" << endl;
+        gotoxy(4,4);
+        cout << "2. Eliminar candidato " << endl;
+        gotoxy(4,5);
+        cout << " 0. Volver              " << endl;
+         
+        
         cin >> op;
         system("cls");
         switch(op){
             case 1:
                 //agregarCandidato();
                 system("cls");
-                 cout << "___________________________________" << endl;
+                 Box(25,5);
                  SetConsoleTextAttribute(hConsole,14);
-                cout << "| Candidato agregado exitosamente |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "___________________________________" << endl;
+                 gotoxy(4,3);
+                cout << "Candidato agregado exitosamente" << endl;
+               
                 break;
             case 2:
                 
                 break;
             case 0:
                 system("cls");
-                cout << "_________________" << endl;
+                Box(15,5);
                  SetConsoleTextAttribute(hConsole,14);
-                cout << "| Regresando... |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "_________________" << endl;
+                 gotoxy(4,3);
+                cout << "Regresando..." << endl;
+                 
                 break;
             default:
-                 cout << "_____________________________" << endl;
+                 Box(20,5);
                  SetConsoleTextAttribute(hConsole,14);
-                cout << "| Ingrese una opcion valida |" << endl;
-                 SetConsoleTextAttribute(hConsole,7);
-                cout << "_____________________________" << endl;
+                 gotoxy(4,3),
+                cout << "Ingrese una opcion valida " << endl;
+               
         }
     }while(op!=0);
 }

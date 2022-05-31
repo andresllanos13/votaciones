@@ -1,8 +1,36 @@
 #include <iostream>
 #include <windows.h>
 #include "HeaderFiles/ListaCandidatos.h"
+#include "HeaderFiles/ListaVotos.h"
 using namespace std;
-
+void gotoxy (int x,int y){
+	COORD coord;
+	coord.X=x;
+	coord.Y=y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),coord);
+}
+void Box (int w,int h){
+	int i,j;
+	putchar(218);
+	for(i=0;i<w-2;i++){
+		putchar(196);
+	}
+	putchar(191);
+	cout<<endl;
+	for(i=0;i<h-2;i++){
+		putchar(179);
+		for(j=0;j<w-2;j++){
+			cout<<" ";
+		}
+		putchar(179);
+		cout<<endl;
+	}
+	putchar(192);
+	for(i=0;i<w-2;i++){
+		putchar(196);
+	}
+	putchar(217);
+}
 FILE *archivoCandidatos;
 ListaCandidatos listaCandidatos;
 
@@ -43,3 +71,17 @@ void mostrarListaCandidatos(){
     SetConsoleTextAttribute(hConsole,7);
     cout << "__________________________________________________________________"<<endl;
 }
+void totalvotos(int n){
+      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    int i;
+    
+    
+    Box(35,25);
+    SetConsoleTextAttribute(hConsole,12);
+    gotoxy(4,2);
+    cout<<listaCandidatos.candidatos[n].presidente;
+    gotoxy(4,3);
+    cout<<listaCandidatos.candidatos[n].vicepresidente;
+    
+}
+void mostrarganador()
